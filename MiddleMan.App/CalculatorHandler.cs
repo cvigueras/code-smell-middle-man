@@ -13,21 +13,15 @@ namespace MiddleMan.App
             Calculator = new Calculator();
         }
 
-        public int Handle()
+        public int? Handle()
         {
-            Number1 = GetRandomNumber();
-            Number2 = GetRandomNumber();
+            Number1 = Number.Create();
+            Number2 = Number.Create();
             if (IsSumOperation())
             {
                 return Calculator.Sum(Number1, Number2);
             }
             return Calculator.Split(Number1, Number2);
-        }
-
-        private Number GetRandomNumber()
-        {
-            var random = new Random();
-            return Number.Create(random.Next(1, 21));
         }
 
         private bool IsSumOperation()
