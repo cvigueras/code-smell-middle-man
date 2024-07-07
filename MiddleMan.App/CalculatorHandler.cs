@@ -15,17 +15,17 @@ namespace MiddleMan.App
 
         public int Handle()
         {
-            var random = new Random();
-            Number1 = GetRandomNumber(random);
-            Number2 = GetRandomNumber(random);
+            Number1 = GetRandomNumber();
+            Number2 = GetRandomNumber();
             if (IsSumOperation())
             {
                 return SumNumbers();
             }
             return SplitNumbers();
         }
-        private Number GetRandomNumber(Random random)
+        private Number GetRandomNumber()
         {
+            var random = new Random();
             return Number.Create(random.Next(1, 21));
         }
         private bool IsSumOperation()
