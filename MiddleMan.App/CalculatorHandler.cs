@@ -16,16 +16,33 @@ namespace MiddleMan.App
         public int Handle()
         {
             var random = new Random();
-            Number1 = Number.Create(random.Next(1, 21));
-            Number2 = Number.Create(random.Next(1, 21));
-            if (Number1.Value % 2 == 0)
+            Number1 = GetRandomNumber(random);
+            Number2 = GetRandomNumber(random);
+            if (IsSumOperation())
             {
-                return Calculator.Sum(Number1, Number2);
+                return SumNumbers();
             }
-            else
-            {
-                return Calculator.Split(Number1, Number2);
-            }
+            return SplitNumbers();
+        }
+
+        private int SplitNumbers()
+        {
+            return Calculator.Split(Number1, Number2);
+        }
+
+        private int SumNumbers()
+        {
+            return Calculator.Sum(Number1, Number2);
+        }
+
+        private bool IsSumOperation()
+        {
+            return Number1.Value % 2 == 0;
+        }
+
+        private Number GetRandomNumber(Random random)
+        {
+            return Number.Create(random.Next(1, 21));
         }
     }
 }
