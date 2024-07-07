@@ -24,6 +24,14 @@ namespace MiddleMan.App
             }
             return SplitNumbers();
         }
+        private Number GetRandomNumber(Random random)
+        {
+            return Number.Create(random.Next(1, 21));
+        }
+        private bool IsSumOperation()
+        {
+            return Number1.Value % 2 == 0;
+        }
 
         private int SplitNumbers()
         {
@@ -33,16 +41,6 @@ namespace MiddleMan.App
         private int SumNumbers()
         {
             return Calculator.Sum(Number1, Number2);
-        }
-
-        private bool IsSumOperation()
-        {
-            return Number1.Value % 2 == 0;
-        }
-
-        private Number GetRandomNumber(Random random)
-        {
-            return Number.Create(random.Next(1, 21));
         }
     }
 }
