@@ -19,28 +19,20 @@ namespace MiddleMan.App
             Number2 = GetRandomNumber();
             if (IsSumOperation())
             {
-                return SumNumbers();
+                return Calculator.Sum(Number1, Number2);
             }
-            return SplitNumbers();
+            return Calculator.Split(Number1, Number2);
         }
+
         private Number GetRandomNumber()
         {
             var random = new Random();
             return Number.Create(random.Next(1, 21));
         }
+
         private bool IsSumOperation()
         {
             return Number1.Value % 2 == 0;
-        }
-
-        private int SplitNumbers()
-        {
-            return Calculator.Split(Number1, Number2);
-        }
-
-        private int SumNumbers()
-        {
-            return Calculator.Sum(Number1, Number2);
         }
     }
 }
